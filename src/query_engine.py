@@ -12,12 +12,11 @@ from llama_index.vector_stores.chroma import ChromaVectorStore
 from llama_index.core import VectorStoreIndex
 from llama_index.llms.ollama import Ollama
 from llama_index.core import Settings
+from llama_index.core.base.base_query_engine import BaseQueryEngine
 import chromadb
 from settings import DOCUMENT_FOLDER
 
-import asyncio
-
-async def main():
+async def generate_query_engine() -> BaseQueryEngine:
     reader = SimpleDirectoryReader(input_dir=DOCUMENT_FOLDER)
     documents = reader.load_data()
     db = chromadb.PersistentClient(path="./chroma_db")
@@ -39,9 +38,5 @@ async def main():
 
     Settings.llm = Ollama(model='gemma3:4b', base_url='http://localhost:11434', temperature=0.0)
     query_engine = index.as_query_engine(response_mode="refine")
+    return query_engine
 
-    res = query_engine.query("How can I use a tool in a workflow?")
-    print(res)
-
-
-asyncio.run(main())
