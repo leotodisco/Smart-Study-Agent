@@ -1,5 +1,5 @@
 import subprocess
-from query_engine import generate_query_engine
+from llamaindex.query_engine import generate_query_engine
 
 import asyncio
 

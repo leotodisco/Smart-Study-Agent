@@ -173,6 +173,10 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 
-
 # chromaDB
 chroma_db
+chroma_langchain_db
+
+# documents
+test_documents
+*.pdf

@@ -14,7 +14,7 @@ from llama_index.llms.ollama import Ollama
 from llama_index.core import Settings
 from llama_index.core.base.base_query_engine import BaseQueryEngine
 import chromadb
-from settings import DOCUMENT_FOLDER
+from llamaindex.settings import DOCUMENT_FOLDER
 
 async def generate_query_engine() -> BaseQueryEngine:
     reader = SimpleDirectoryReader(input_dir=DOCUMENT_FOLDER)
